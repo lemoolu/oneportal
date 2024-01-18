@@ -1,0 +1,24 @@
+{
+  "name": "oneportal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "pnpm clean:turbo & pnpm clean:node_modules",
+    "clean:turbo": "rm -rf ./.turbo ./packages/**/.turbo",
+    "clean:node_modules": "rm -rf ./node_modules ./packages/**/node_modules",
+    "dev": "turbo dev",
+    "dev:s": "turbo dev --filter=server",
+    "build": "turbo build",
+    "deploy": "turbo deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "license": "ISC",
+  "devDependencies": {
+  }
+}
