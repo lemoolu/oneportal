@@ -1,7 +1,7 @@
 import { Controller, Get, Post, UseGuards, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
-import { Public } from './constants';
+import { Public, TOKEN_KEY } from './constants';
 import { User } from '../users/users.model';
 import { Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
@@ -21,7 +21,7 @@ export class AuthController {
       token: `${token}`,
       // refreshToken,
     };
-    res.cookie('Authorization', secretData.token, { httpOnly: false });
+    res.cookie(TOKEN_KEY, secretData.token, { httpOnly: false });
     return { msg: 'success' };
   }
 
