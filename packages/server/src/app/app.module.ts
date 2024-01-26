@@ -5,6 +5,9 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule } from '@nestjs/config';
 import configLoad from '../config';
 import { APP_GUARD } from '@nestjs/core';
+import { AuthModule } from '@/modules/auth/auth.module';
+import { AuthController } from '@/modules/auth/auth.controller';
+import { JwtAuthGuard } from '@/modules/auth/jwt-auth.guard';
 
 const config = configLoad();
 
@@ -19,14 +22,20 @@ const config = configLoad();
     }),
     // https://github.com/nestjs/throttler
     ThrottlerModule.forRoot([{ ttl: 1000, limit: config.throttlerLimit }]),
+    // authentication global
+    AuthModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, AuthController],
   providers: [
     AppService,
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
     },
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
   ],
 })
-export class AppModule {}
+export class AppModule { }

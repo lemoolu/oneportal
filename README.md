@@ -1,9 +1,27 @@
-- [ ] 项目结构最佳实践
-- [ ] 登录、注册
+# About
+
+Integrate front-end and back-end to realize common capabilities of saas system and serve as demo for subsequent projects
+
+
+# Tech Stack
+* Nextjs - WebPage & BFF
+* Nestjs - Server
+* TailwindCSS – Styles
+* Google Analytics - Analytics
+
+
+# Roadmap
+- [X] Fullstack Project Structure Best Practices
+- [ ] login by passport
+  * user register
+  * password login & logout
+  * github login
+  * email login
+- [ ] register
 - [ ] portal门户
-- [ ] 文件、图片资源管理能力
-- [ ] 接口通用鉴权能力
-- [ ] 接口测试能力，做到100%覆盖
-- [ ] 生成接口文档
+- [ ] integrate oss
+- [ ] Interface login authentication
+- [ ] Interface permission authentication
+- [ ] auto generate api document
 - [ ] 表管理能力
-- [ ] GraphQL 
+- [ ] GraphQL
