@@ -17,11 +17,13 @@ Integrate front-end and back-end to realize common capabilities of saas system a
   * password login & logout
   * github login
   * email login
+- [ ] database
+  * user
+- [ ] Interface login authentication
+- [ ] Interface permission authentication
 - [ ] register
 - [ ] portal门户
 - [ ] integrate oss
-- [ ] Interface login authentication
-- [ ] Interface permission authentication
 - [ ] auto generate api document
 - [ ] 表管理能力
 - [ ] GraphQL

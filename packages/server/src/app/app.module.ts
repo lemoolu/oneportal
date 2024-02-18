@@ -1,13 +1,14 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule } from '@nestjs/config';
 import configLoad from '../config';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_PIPE } from '@nestjs/core';
 import { AuthModule } from '@/modules/auth/auth.module';
 import { AuthController } from '@/modules/auth/auth.controller';
 import { JwtAuthGuard } from '@/modules/auth/jwt-auth.guard';
+import { LoggerMiddleware } from '@/middleware';
 
 const config = configLoad();
 
@@ -36,6 +37,15 @@ const config = configLoad();
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
     },
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
   ],
 })
-export class AppModule { }
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    // global middleware
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
