@@ -7,8 +7,12 @@ import configLoad from '../config';
 import { APP_GUARD, APP_PIPE } from '@nestjs/core';
 import { AuthModule } from '@/modules/auth/auth.module';
 import { AuthController } from '@/modules/auth/auth.controller';
+import { UserController } from '@/modules/user/user.controller';
+import { UserModule } from '@/modules/user/user.module';
 import { JwtAuthGuard } from '@/modules/auth/jwt-auth.guard';
 import { LoggerMiddleware } from '@/middleware';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 const config = configLoad();
 
@@ -25,6 +29,11 @@ const config = configLoad();
     ThrottlerModule.forRoot([{ ttl: 1000, limit: config.throttlerLimit }]),
     // authentication global
     AuthModule,
+    UserModule,
+    // GraphQLModule.forRoot<ApolloDriverConfig>({
+    //   driver: ApolloDriver,
+    //   playground: false,
+    // }),
   ],
   controllers: [AppController, AuthController],
   providers: [

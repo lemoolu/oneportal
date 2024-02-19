@@ -1,6 +1,6 @@
 const config = {
   port: 8000,
-  throttlerLimit: 1,
+  throttlerLimit: 10,
 };
 
 export default config;

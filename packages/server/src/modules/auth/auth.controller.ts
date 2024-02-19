@@ -2,7 +2,7 @@ import { Controller, Get, Post, UseGuards, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { Public, TOKEN_KEY } from './constants';
-import { User } from '../users/users.model';
+import { User } from '../user/user.model';
 import { Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 
