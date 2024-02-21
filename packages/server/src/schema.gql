@@ -1,0 +1,15 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Post {
+  id: String!
+  isPublished: Boolean!
+  text: String!
+  title: String!
+}
+
+type Query {
+  post(id: String!): Post
+  posts: [Post!]!
+}

@@ -6,14 +6,12 @@ import { UserService } from './user.service';
   path: 'user',
 })
 export class UserController {
-  constructor(
-    private userService: UserService,
-  ) { }
+  constructor(private userService: UserService) { }
 
   @Public()
   @Get('/:id')
   async login(@Req() req) {
     return await this.userService.testOne();
-    return '3333';
+    // return '3333';
   }
 }
